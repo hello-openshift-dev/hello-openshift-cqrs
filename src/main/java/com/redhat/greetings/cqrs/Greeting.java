@@ -4,7 +4,6 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 
 import java.sql.Timestamp;
-import java.time.Instant;
 
 @Entity
 public class Greeting extends PanacheEntity {
@@ -15,7 +14,7 @@ public class Greeting extends PanacheEntity {
 
     Timestamp timestamp;
 
-    boolean validated;
+    boolean valid;
     public static Greeting createFromCommand(AddGreetingCommand addGreetingCommand) {
 
         return new Greeting(addGreetingCommand.sourceSystem(),
@@ -24,11 +23,11 @@ public class Greeting extends PanacheEntity {
                 addGreetingCommand.validated());
     }
 
-    public Greeting(SourceSystem sourceSystem, String text, Timestamp timestamp, boolean validated) {
+    public Greeting(SourceSystem sourceSystem, String text, Timestamp timestamp, boolean valid) {
         this.sourceSystem = sourceSystem;
         this.text = text;
         this.timestamp = timestamp;
-        this.validated = validated;
+        this.valid = valid;
     }
 
     public Greeting() {
@@ -40,7 +39,7 @@ public class Greeting extends PanacheEntity {
                 "sourceSystem=" + sourceSystem +
                 ", text='" + text + '\'' +
                 ", timestamp=" + timestamp +
-                ", validated=" + validated +
+                ", validated=" + valid +
                 ", id=" + id +
                 '}';
     }

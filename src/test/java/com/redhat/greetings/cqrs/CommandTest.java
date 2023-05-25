@@ -12,9 +12,9 @@ import org.slf4j.LoggerFactory;
 import java.time.Instant;
 
 @QuarkusTest
-public class KafkaServiceTest {
+public class CommandTest {
 
-    static final Logger LOGGER = LoggerFactory.getLogger(KafkaServiceTest.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(CommandTest.class);
 
     @Inject
     KafkaService kafkaService;
@@ -31,4 +31,5 @@ public class KafkaServiceTest {
         ArgumentCaptor<Greeting> argumentCaptor = ArgumentCaptor.forClass(Greeting.class);
         Mockito.verify(greetingRepository, Mockito.times(1)).persist(argumentCaptor.capture());
     }
+
 }
